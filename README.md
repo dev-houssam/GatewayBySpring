@@ -18,8 +18,10 @@ Plage de port (HEY) en production(/developpement) :
 Répartition par API : 
 - GatewayAPI : 12100 -> host : http://localhost:12100
 - MovieAPI : 12101   -> host : http://localhost:12101
-- Payment : 12102    -> host : http://localhost:12102
+- Paymentapi : 12102    -> host : http://localhost:12102
 - ArtistAPI : 12103  -> host : http://localhost:12103
 - UserAPI : 121104   -> host : http://localhost:12104
 - Frontend : 12105   -> host : http://localhost:12105
 
+
+Note : Pour Frontend, possible reverse proxy vers 80.
