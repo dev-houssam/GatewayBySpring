@@ -31,9 +31,10 @@ public class GatewayApplication {
 								.rewritePath("/api/?(?<segment>.*)/", "/${segment}")
 								.prefixPath("/")
 							.addResponseHeader("X-Powered-By","Houssam's Movies  Gateway Service")
+								.addResponseHeader("Access-Control-Allow-Origin", "*")
 								.addResponseHeader("Host-Institution","University of Western Brittany's API  Gateway Service")
 						)
-						.uri("http://localhost:9001")
+						.uri("http://localhost:12101")
 				)
 				.build();
 		//Je le laisse pour plus tard, pour des manipulation plus precise : .rewritePath("/api/movies/(?<path>.*)", "/movies/${path}")
@@ -47,12 +48,13 @@ public class GatewayApplication {
 						.filters(f -> f
 								.prefixPath("/")
 								.addResponseHeader("X-Powered-By","Houssam's Movies  Gateway Service")
+								.addResponseHeader("Access-Control-Allow-Origin", "*")
 								.addResponseHeader("Host-Institution","University of Western Brittany's API  Gateway Service")
 						)
 						.uri("http://localhost:9001")
 				)
 				.route(r -> r.host("http://localhost:9000/api/movies/")
-						.uri("http://localhost:9001/movies")
+						.uri("http://localhost:12101/movies")
 				)
 				.build();
 
@@ -69,7 +71,7 @@ public class GatewayApplication {
 							.addResponseHeader("Host-Institution","University of Western Brittany's API  Gateway Service")
 
 					)
-				.uri("http://localhost:9004"))
+				.uri("http://localhost:12104"))
 					.build();
 	}
 
@@ -99,22 +101,22 @@ public class GatewayApplication {
 								.addResponseHeader("Host-Institution","University of Western Brittany's API  Gateway Service")
 
 						)
-						.uri("http://localhost:9003"))
+						.uri("http://localhost:12103"))
 				.build();
 	}
 
 	@Bean
-	public RouteLocator reservationRouteLocator(RouteLocatorBuilder builder){
+	public RouteLocator paymentRouteLocator(RouteLocatorBuilder builder){
 		return builder.routes()
-				.route(r -> r.path("/api/reservations/**")
+				.route(r -> r.path("/api/payment/**")
 						.filters(f -> f
 								.prefixPath("/")
 								.stripPrefix(1)
-								.addResponseHeader("X-Powered-By","Houssam's Reservation Gateway Service")
+								.addResponseHeader("X-Powered-By","Houssam's Payment Gateway Service")
 								.addResponseHeader("Host-Institution","University of Western Brittany's API  Gateway Service")
 
 						)
-						.uri("http://localhost:9006"))
+						.uri("http://localhost:12102"))
 				.build();
 	}
 
