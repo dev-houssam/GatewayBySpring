@@ -20,12 +20,14 @@
 		<relativePath/>
 	</parent>
 
+	
+
 	<properties>
 		<java.version>21</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
 	</properties>
 
-	<dependencies>
+	<dependencies> 
 
 		<!-- SPRING GATEWAY -->
 		<dependency>
